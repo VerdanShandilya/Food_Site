@@ -1,12 +1,13 @@
 const express = require('express')
 const cors = require('cors')
-const dotenv= require('dotenv')
+const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const foodRouter = require('./routes/foodroute')
 
 const app = express()
 dotenv.config()
 
-app.use(express.json());  //parsing data
+app.use(express.json())//parsing data
 app.use(cors())
 
 
@@ -25,3 +26,7 @@ app.get("/" ,(req,res) =>{
 
 
 db();
+
+//api endpoint
+
+app.use("/api/food",foodRouter)

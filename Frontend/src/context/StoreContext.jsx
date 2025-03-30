@@ -29,7 +29,7 @@ const StoreContextProvider = (props) =>{
         }
         return totalamount
     }
-
+    
     const contextValue = {
         food_list,
         addtocart,
