@@ -4,7 +4,7 @@ const fs = require('fs')
 //add food item
 const addfood = async (req,res) =>{
     const {name,description,price,category} = req.body;
-    const image = req.file ? req.file.path : null;
+    const image =req.file.filename;
     const food = new foodModel({
         name:name,
         description:description,
@@ -38,13 +38,13 @@ const listfood = async (req,res) =>{
 const removefood = async (req,res) =>{
     try{
         if (!req.body.id) {
-            return res.status(400).json({ message: "Food ID is required" });
+            return res.status(400).json({ success: false, message: "Food ID is required" });
         }
         const food = await foodModel.findById(req.body.id);
-        // fs.unlink(`uploads/${food.image}`, ()=>{})
+        fs.unlink(`uploads/${food.image}`, ()=>{})
 
         await foodModel.findByIdAndDelete(req.body.id);
-        res.json("food removed");
+        res.status(200).json({success: true,message:"food removed"});
     }
     catch (error){
         console.log(error);
