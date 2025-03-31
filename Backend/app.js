@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const foodRouter = require('./routes/foodroute');
+const user = require('./routes/userroute');
 
 const app = express();
 dotenv.config();
@@ -29,3 +30,5 @@ db();
 
 // API endpoint
 app.use("/api/food", foodRouter);
+
+app.use("/api/user",user);
