@@ -21,10 +21,10 @@ const loginuser = async (req, res) =>{
         const ismatch = await bcrypt.compare(password,user.password);
 
         if(!ismatch){
-            return res.status(401).json({message:"Incorrect Password"});
+            return res.status(401).json({success:false, message:"Incorrect Password"});
         }
         const token = createToken(user._id);
-        res.json({token});
+        res.json({success:true,token});
     }
     catch (error){
         registeruser.json({message:"could not fetch data"});

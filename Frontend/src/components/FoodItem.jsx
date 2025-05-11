@@ -9,7 +9,7 @@ export const FoodItem = ({item}) => {
   return (
     <div className='food-item'>
         <div className="food-item-img-container">
-            <img  className='food-item-image' src={item.image} alt="" />
+            <img  className='food-item-image' src={"http://localhost:4000/images/" + item.image} alt="" />
             {
                 !cartitems[item._id] ? <img className='add' onClick= {() => addtocart(item._id)} src={assets.add_icon_white}/>
                 :<div className='food-item-counter'>

@@ -30,9 +30,9 @@ export const Cart = () => {
         {food_list.map((item,index) =>{
           if(cartitems[item._id]>0){
             return(
-              <div>
+              <div key={index}>
               <div className="cart-items-title cart-items-item">
-                <img src={item.image} alt="" />
+                <img src={"http://localhost:4000/images/" + item.image} alt="" />
                 <p>{item.name}</p>
                 <p>Rs.{item.price}</p>
                 <p>{cartitems[item._id]}</p>

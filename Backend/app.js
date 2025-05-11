@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const foodRouter = require('./routes/foodroute');
 const user = require('./routes/userroute');
+const cartdata = require('./routes/cartroute');
 
 const app = express();
 dotenv.config();
@@ -32,3 +33,5 @@ db();
 app.use("/api/food", foodRouter);
 
 app.use("/api/user",user);
+
+app.use("/api/cart",cartdata)
